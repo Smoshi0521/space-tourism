@@ -40,7 +40,7 @@ function Destination() {
 
 
   return (
-    <div className='mobile:bg-desti_Mobile pb-[53px] tablet:bg-desti_Tablet desktop:bg-desti_Desktop h-screen bg-cover bg-no-repeat flex flex-col gap-4 overflow-x-hidden tablet:px-0 tablet:pb-[90px]' style={{ overflowY: hideScroll ? 'hidden' : 'auto' }}>
+    <div className='mobile:bg-desti_Mobile pb-[53px] tablet:bg-desti_Tablet desktop:bg-desti_Desktop h-screen bg-cover bg-no-repeat flex flex-col gap-4 overflow-x-hidden tablet:px-0 tablet:pb-[112px]' style={{ overflowY: hideScroll ? 'hidden' : 'auto' }}>
       {
         spaceData.length !== 0 && (
           <Navbar />
@@ -58,14 +58,14 @@ function Destination() {
 
       {
         spaceData.length !== 0 && (
-          <div className='w-full flex flex-col items-center px-8 tablet:px-10 gap-10 tablet:mt-3'>
+          <div className='w-full flex flex-col items-center px-8 tablet:px-10 desktop:px-0 gap-10 tablet:mt-3'>
 
             <AnimatePresence>
               <motion.div
                 initial={{ y: -15, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5 }}
-                className='flex flex-col w-full gap-10 desktop:flex-row desktop:items-center desktop:justify-evenly desktop:gap-10 '>
+                className='flex flex-col w-full gap-10 desktop:flex-row desktop:items-center desktop:justify-between desktop:px-[220px] desktop:gap-10'>
 
                 <div className=' w-full flex justify-center relative desktop:w-fit'>
                   <motion.img

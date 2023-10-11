@@ -21,7 +21,7 @@ function Technology() {
   }
 
   return (
-    <div className='mobile:bg-crew_Mobile pb-[81px] tablet:bg-crew_Tablet desktop:bg-crew_Desktop h-screen bg-cover bg-no-repeat flex flex-col gap-4 overflow-x-hidden tablet:px-0 tablet:pb-[97px] desktop:pb-0'>
+    <div className='mobile:bg-crew_Mobile pb-[81px] tablet:bg-crew_Tablet desktop:bg-crew_Desktop h-screen bg-cover bg-no-repeat flex flex-col gap-4 overflow-x-hidden tablet:px-0 tablet:pb-[97px] desktop:pb-[199px]'>
       {
         spaceData.length !== 0 && (
           <Navbar />
@@ -54,7 +54,7 @@ function Technology() {
 
               {/* Container for desktop */}
 
-              <div className='flex flex-col gap-5 desktop:flex-row desktop:items-center desktop:gap-10 desktop:pl-[160px] w-full desktop:justify-between'>
+              <div className='flex flex-col gap-5 desktop:flex-row desktop:items-center desktop:gap-10 desktop:pl-[165px] w-full desktop:justify-between'>
 
                 <div className='flex flex-col gap-10 items-center desktop:flex-row '>
                   {/* The next buttons */}

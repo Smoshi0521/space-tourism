@@ -30,7 +30,7 @@ export default function Home() {
 
 
   return (
-    <div className='mobile:bg-home_Mobile relative transition duration-500 h-screen bg-cover bg-no-repeat flex flex-col gap-5 overflow-y-auto overflow-x-hidden tablet:bg-home_Tablet tablet:pb-[90px] desktop:pb-[253px]  desktop:justify-between desktop:bg-home_Desktop'>
+    <div className='mobile:bg-home_Mobile relative transition duration-500 h-screen bg-cover bg-no-repeat flex flex-col gap-5 overflow-y-auto overflow-x-hidden tablet:bg-home_Tablet tablet:pb-[90px] desktop:pb-[131px]  desktop:justify-between desktop:bg-home_Desktop'>
       {
         mounted && (
           <Navbar />

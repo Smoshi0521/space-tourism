@@ -23,7 +23,7 @@ function Navbar() {
 
   const navList = ["/", "DESTINATION", "CREW", "TECHNOLOGY"]
   return (
-    <div className='w-full flex items-center justify-between tablet:pr-0 px-8 py-5 h-24 gap-5 relative desktop:mt-[34px]'>
+    <div className='w-full flex items-center justify-between tablet:pr-0 px-8 py-5 h-24 gap-5 relative desktop:mt-[40px]'>
       <audio ref={music} src='/audio/interstellar.mp3'>
 
       </audio>
@@ -42,9 +42,9 @@ function Navbar() {
         initial={mobileNav ? { x: 0 } : { x: 300 }}
         animate={mobileNav ? { x: 0 } : { x: 300 }}
         transition={{ duration: 0.3 }}
-        className={`bg-gray-100/5 backdrop-blur-xl h-screen w-4/6 top-0 fixed right-0 px-5 flex flex-col gap-5 z-30 tablet:hidden`} >
+        className={`bg-gray-100/5 backdrop-blur-xl h-screen w-4/6 top-0 fixed right-0 pl-5 flex flex-col gap-5 z-30 tablet:hidden`} >
         <div className='w-full  flex justify-end h-24'>
-          <button onClick={closeMobileNav} className='relative'>
+          <button onClick={closeMobileNav} className='relative mr-5'>
             <AiOutlineClose className="text-3xl text-paleblue" />
           </button>
         </div>
@@ -53,7 +53,7 @@ function Navbar() {
             {
               navList.map((nav: string, index: number) => (
                 <Link key={nav} href={`${index === 0 ? nav : `/${nav.toLowerCase()}`}`}>
-                  <li className='flex items-center gap-2 tracking-[2.7px]'>
+                  <li className={`flex items-center gap-2 tracking-[2.7px] border-[4px] border-transparent ${pageName === `${nav === "/" ? "/" : `/${nav.toLowerCase()}`}` ? "border-r-white" : null}`}>
                     <p className='font-bold'>{`0${index}`}</p>
                     <p className='font-thin'>{nav === "/" ? "HOME" : nav}</p>
                   </li>
