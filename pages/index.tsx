@@ -1,14 +1,10 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-import { design } from '@/styles/style'
 import Navbar from '@/components/Navbar'
-import { motion } from 'framer-motion'
-import { useEffect, useState, useRef } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
+import { useEffect, useRef, useState } from 'react'
 export default function Home() {
   const [pulse, setPulse] = useState(false)
-  const [play, setPlay] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const router = useRouter()
   const pulseEffectDelay = () => {
     setPulse(!pulse)
@@ -18,33 +14,17 @@ export default function Home() {
     setPulse(false)
     setTimeout(() => {
       router.push('/destination')
-    },500)
+    }, 500)
   }
   useEffect(() => {
-    setPlay(true)
+    setMounted(true)
   }, [])
 
-  console.log(play)
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  // useEffect(() => {
-  //   // Play the audio when the component mounts
-  //   const handlePlay = () => {
-  //     if (audioRef.current) {
-  //       audioRef.current.play().catch(error => {
-  //         console.error('Play failed:', error);
-  //       });
-  //     }
-  //   };
-  //   if(play){
-  //     handlePlay()
-  //   }
-  // }, [play]);
- 
   return (
     <div className='mobile:bg-home_Mobile tablet:bg-home_Tablet desktop:justify-between desktop:bg-home_Desktop h-screen bg-cover bg-no-repeat flex flex-col gap-5 pb-5 overflow-y-auto overflow-x-hidden desktop:py-8 2xl:pb-20 desktop:overflow-y-hidden'>
       {
-        play && (
+        mounted && (
           <Navbar />
         )
       }
