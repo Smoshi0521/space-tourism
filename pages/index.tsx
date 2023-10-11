@@ -6,15 +6,21 @@ export default function Home() {
   const [pulse, setPulse] = useState(false)
   const [mounted, setMounted] = useState(false)
   const router = useRouter()
+
   const pulseEffectDelay = () => {
     setPulse(!pulse)
   }
 
   const moveNext = () => {
-    setPulse(false)
+    setPulse(true)
+
+    setTimeout(() => {
+      setPulse(false)
+    },800)
+
     setTimeout(() => {
       router.push('/destination')
-    }, 500)
+    }, 1200)
   }
   useEffect(() => {
     setMounted(true)

@@ -54,7 +54,7 @@ function Technology() {
 
               {/* Container for desktop */}
 
-              <div className='flex flex-col gap-5 desktop:flex-row desktop:items-center desktop:gap-10 desktop:pl-20 w-full desktop:justify-between '>
+              <div className='flex flex-col gap-5 desktop:flex-row desktop:items-center desktop:gap-10 desktop:pl-[160px] w-full desktop:justify-between'>
 
                 <div className='flex flex-col gap-10 items-center desktop:flex-row '>
                   {/* The next buttons */}
