@@ -21,7 +21,7 @@ function Technology() {
   }
 
   return (
-    <div className='mobile:bg-tech_Mobile tablet:bg-tech_Tablet desktop:bg-tech_Desktop h-screen bg-cover bg-no-repeat flex flex-col gap-4 overflow-y-auto overflow-x-hidden desktop:py-8 tablet:px-0 pb-[50px] '>
+    <div className='mobile:bg-crew_Mobile pb-[81px] tablet:bg-crew_Tablet desktop:bg-crew_Desktop h-screen bg-cover bg-no-repeat flex flex-col gap-4 overflow-x-hidden tablet:px-0 tablet:pb-[97px] desktop:pb-0'>
       {
         spaceData.length !== 0 && (
           <Navbar />
@@ -31,8 +31,8 @@ function Technology() {
       {
         spaceData.length !== 0 && (
           <div className='flex items-center justify-center tablet:justify-start gap-8 relative tablet:pl-10 desktop:px-[185px] tablet:mt-10'>
-            <p className='text-gray-600 font-bold text-xl desktop:text-3xl'>03</p>
-            <h2 className='font-barlow text-xl tracking-widest desktop:text-3xl'>SPACE LAUNCH 101</h2>
+            <p className='text-[#FFFFFF]/25 font-barlow font-bold text-xl desktop:text-[28px]'>03</p>
+            <h2 className='font-barlow text-xl tracking-widest desktop:text-[28px]'>SPACE LAUNCH 101</h2>
           </div>
         )
       }
@@ -45,11 +45,11 @@ function Technology() {
               initial={{ y: -15, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className='w-full flex flex-col items-center gap-5 mt-5'>
+              className='w-full flex flex-col items-center gap-10 mt-5'>
 
               {/* Image */}
-              <div className='w-full desktop:hidden'>
-                <img src={spaceData[currentTech]?.images.landscape} className='w-full' />
+              <div className='w-full desktop:hidden flex justify-center h-fit'>
+                <img src={spaceData[currentTech]?.images.landscape} className='techSizeMobile' />
               </div>
 
               {/* Container for desktop */}
@@ -58,13 +58,13 @@ function Technology() {
 
                 <div className='flex flex-col gap-10 items-center desktop:flex-row '>
                   {/* The next buttons */}
-                  <div className='flex items-center gap-4 justify-center desktop:flex-col mt-5  desktop:mt-0'>
+                  <div className='flex items-center gap-4 desktop:gap-10 justify-center desktop:flex-col mt-5 desktop:mt-0'>
                     {
                       spaceData.map((data: any, index: number) => (
                         <button
                           key={index}
                           onClick={() => nextTech(data.name, index)}
-                          className={`rounded-full h-10 w-10 flex items-center justify-center tablet:h-16 tablet:w-16 desktop:w-20 desktop:h-20 transition duration-300  ${index === currentTech ? 'bg-white text-black' : 'text-white bg-transparent border border-gray-500'}`}
+                          className={`rounded-full h-[40px]  w-[40px] flex items-center justify-center tablet:h-[60px] tablet:w-[60px] desktop:w-[80px] desktop:h-[80px] transition duration-300  ${index === currentTech ? 'bg-white text-black' : 'text-white bg-transparent border border-gray-500'}`}
                         >
                           <p className={`font-bellafair tablet:text-2xl desktop:text-3xl ${index === currentTech ? 'text-black' : 'text-white '}`}>{index + 1}</p>
                         </button>
@@ -76,11 +76,11 @@ function Technology() {
                     {/* Technology Names and Title */}
                     <div className='flex flex-col items-center w-full  text-center desktop:w-fit desktop:items-start'>
                       <p className='text-paleblue text-md tracking-widest font-barlow tablet:text-lg  desktop:text-xl'>THE TERMINOLOGY...</p>
-                      <p className='text-[25px] font-bellafair text-white tablet:text-[40px] desktop:text-[60px] desktop:text-left'>{spaceData[currentTech]?.name.toUpperCase()}</p>
+                      <p className='text-[25px] font-bellafair text-white tablet:text-[40px] desktop:text-[56px] desktop:text-left'>{spaceData[currentTech]?.name.toUpperCase()}</p>
                     </div>
 
                     {/* Technology Description */}
-                    <div className='px-5 tablet:px-24 desktop:px-0  w-fit'>
+                    <div className='px-5 desktop:px-0 w-full tablet:max-w-[458px]'>
                       <p className='text-paleblue text-lg text-center desktop:text-left desktop:text-2xl'>{spaceData[currentTech]?.description}</p>
                     </div>
                   </div>
@@ -88,7 +88,7 @@ function Technology() {
 
                 {/* Image postion in desktop */}
                 <div className='w-full hidden desktop:block desktop:w-fit  border-red-500'>
-                  <img src={spaceData[currentTech]?.images.portrait} className='w-full desktop:min-w-[30rem] desktop:max-w-[30rem]' />
+                  <img src={spaceData[currentTech]?.images.portrait} className='techSize' />
                 </div>
 
               </div>

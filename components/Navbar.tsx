@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState, useEffect } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { motion } from 'framer-motion'
@@ -6,17 +6,28 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 function Navbar() {
   const [mobileNav, setMobileNav] = useState(false)
+  const [play, setPlay] = useState(false)
+  const music = useRef<HTMLAudioElement | null>(null)
   const router = useRouter()
   const pageName = router.pathname
 
   const closeMobileNav = () => {
     setMobileNav(!mobileNav)
   }
-  
+
+  const playSound = () => {
+    if (music.current) {
+      music.current.play();
+    }
+  }
+
   const navList = ["/", "DESTINATION", "CREW", "TECHNOLOGY"]
   return (
-    <div className='w-full flex items-center justify-between tablet:pr-0 px-8 py-5 h-24 gap-5 relative '>
-      <div className='tablet:p-5'>
+    <div className='w-full flex items-center justify-between tablet:pr-0 px-8 py-5 h-24 gap-5 relative desktop:mt-[34px]'>
+      <audio ref={music} src='/audio/interstellar.mp3'>
+
+      </audio>
+      <div onClick={playSound} className='tablet:p-5 cursor-pointer'>
         <svg xmlns="http://www.w3.org/2000/svg" className='w-[48px] h-[48px]'><g fill="none" fillRule="evenodd"><circle cx="24" cy="24" r="24" fill="#FFF" /><path fill="#0B0D17" d="M24 0c0 16-8 24-24 24 15.718.114 23.718 8.114 24 24 0-16 8-24 24-24-16 0-24-8-24-24z" /></g></svg>
       </div>
       <button onClick={closeMobileNav} className='tablet:hidden'>
@@ -24,7 +35,7 @@ function Navbar() {
       </button>
 
 
-      <span className='hidden desktop:block border-[0.5px] border-b-gray-500 border-transparent relative left-12 w-[30%] 2xl:w-[50%] z-10'></span>
+      <span className='hidden desktop:block border-[0.5px] border-b-gray-500 border-transparent relative left-12 w-[40%] 2xl:w-[50%] z-10'></span>
 
 
       <motion.div
@@ -53,7 +64,7 @@ function Navbar() {
         </div>
       </motion.div>
 
-      <div className='hidden tablet:flex items-center bg-gray-200/5 backdrop-blur-lg h-28 w-full tablet:max-w-[400px] desktop:w-full desktop:max-w-[900px]  desktop:min-w-[600px] pl-10'>
+      <div className='hidden tablet:flex items-center bg-gray-200/5 backdrop-blur-lg h-[96px] w-full tablet:max-w-[400px] desktop:w-full desktop:max-w-[830px]  desktop:min-w-[600px] pl-10'>
         <ul className='w-full flex items-center h-full desktop:desktop:w-[700px] gap-5 desktop:gap-[50px] relative  desktop:justify-evenly '>
 
           {

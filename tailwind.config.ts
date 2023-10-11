@@ -44,12 +44,10 @@ const config: Config = {
         tablet: "480px",
         // => @media (min-width: 768px) { ... }
 
-        desktop: "1023px",
+        desktop: "1440px",
 
-        lg: "1024px",
         // => @media (min-width: 1024px) { ... }
 
-        xl: "1280px",
         // => @media (min-width: 1280px) { ... }
 
         "2xl": "1736px",

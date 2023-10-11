@@ -23,7 +23,7 @@ function Crew() {
   }, [spaceData])
 
   return (
-    <div className='mobile:bg-crew_Mobile tablet:bg-crew_Tablet desktop:bg-crew_Desktop h-screen bg-cover bg-no-repeat flex flex-col gap-4 overflow-y-auto overflow-x-hidden tablet:px-0 pb-[50px] tablet:pb-0 desktop:pt-8 '>
+    <div className='mobile:bg-crew_Mobile pb-[53px] tablet:bg-crew_Tablet desktop:bg-crew_Desktop h-screen bg-cover bg-no-repeat flex flex-col gap-4 overflow-x-hidden tablet:px-0 tablet:pb-[0px]'>
       {
         spaceData.length !== 0 && (
           <Navbar />
@@ -32,8 +32,8 @@ function Crew() {
       {
         spaceData.length !== 0 && (
           <div className='flex items-center justify-center tablet:justify-start gap-8 relative tablet:pl-10 desktop:px-[185px] tablet:mt-10'>
-            <p className='text-gray-600 font-bold text-xl desktop:text-3xl'>02</p>
-            <h2 className='font-barlow text-xl tracking-widest desktop:text-3xl'>MEET YOUR CREW</h2>
+            <p className='text-[#FFFFFF]/25 font-barlow font-bold text-xl desktop:text-[28px]'>02</p>
+            <h2 className='font-barlow text-xl tracking-widest desktop:text-[28px]'>MEET YOUR CREW</h2>
           </div>
         )
       }
@@ -49,7 +49,7 @@ function Crew() {
               {/* Mobile Postion Picture */}
               <div className='tablet:hidden w-full flex justify-center border h-[280px] border-b-gray-500 border-transparent mt-8 relative'>
 
-                <img src={spaceData[currentCrew]?.images?.png} className={` w-[180px] relative ${currentCrew === 0 ? 'left-5' : ''}`} />
+                <img src={spaceData[currentCrew]?.images?.png} className={`crewSizeMobile tablet:crewSize`} />
 
               </div>
 
@@ -72,8 +72,8 @@ function Crew() {
 
                   <div className='w-full space-y-3'>
                     <div className='w-full text-center desktop:text-left space-y-3'>
-                      <h2 className='text-stone-400 text-xl tablet:text-[35px] desktop:text-[45px] leading-tight'>{spaceData[currentCrew]?.role.toUpperCase()}</h2>
-                      <h1 className='text-[25px] tablet:text-[40px] desktop:text-[55px] leading-[50px]'>{spaceData[currentCrew]?.name.toUpperCase()}</h1>
+                      <h2 className='text-[#FFFFFF]/50 text-xl tablet:text-[32px] leading-tight'>{spaceData[currentCrew]?.role.toUpperCase()}</h2>
+                      <h1 className='text-[25px] tablet:text-[40px] desktop:text-[56px] leading-[50px]'>{spaceData[currentCrew]?.name.toUpperCase()}</h1>
                     </div>
                     <div className='w-full max-w-[600px] desktop:max-w-[600px] desktop:text-left'>
                       <p className='text-paleblue text-lg text-center tablet:text-[20px] desktop:text-left desktop:text-[20px] tracking-widest desktop:leading-[35px]'>{spaceData[currentCrew]?.bio}</p>
@@ -81,7 +81,7 @@ function Crew() {
                   </div>
 
                   {/* Tablet to Desktop Postion Circle button */}
-                  <ul className='w-full hidden tablet:flex items-center gap-5 justify-center desktop:justify-start '>
+                  <ul className='w-full hidden tablet:flex items-center gap-5 desktop:mt-20 justify-center desktop:justify-start '>
                     {
                       spaceData?.map((data: any, index: number) => (
                         <li
@@ -100,7 +100,7 @@ function Crew() {
                 <div className='hidden tablet:flex w-fit justify-center h-full'>
                   <img
                     src={spaceData[currentCrew]?.images?.png}
-                    className={`relative  desktop:bottom-0 min-w-[400px] w-full desktop:max-w-[350px] 2xl:max-w-[450px]`} />
+                    className={`crewSizeMobile tablet:crewSize`} />
                 </div>
 
               </div>

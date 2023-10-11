@@ -14,3 +14,22 @@
 *{
   -webkit-tap-highlight-color: transparent;
  }
+
+ @layer utilities{
+  .moonSize{
+    width: clamp(300px, 445px, 500px);
+  }
+  .crewSize{
+    width: clamp(327px, 450px, 500px);
+  }
+  .crewSizeMobile{
+    width: clamp(250px, 250px, 500px);
+  }
+  .techSize{
+    width: clamp(400px, 515px, 500px);
+    
+  }
+  .techSizeMobile{
+    height: clamp(170px, 100%, 500px);
+  }
+ }
