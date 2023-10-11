@@ -1,118 +1,106 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
-
+import { design } from '@/styles/style'
+import Navbar from '@/components/Navbar'
+import { motion } from 'framer-motion'
+import { useEffect, useState, useRef } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import { useRouter } from 'next/router'
 export default function Home() {
+  const [pulse, setPulse] = useState(false)
+  const [play, setPlay] = useState(false)
+  const router = useRouter()
+  const pulseEffectDelay = () => {
+    setPulse(!pulse)
+  }
+
+  const moveNext = () => {
+    setPulse(false)
+    setTimeout(() => {
+      router.push('/destination')
+    },500)
+  }
+  useEffect(() => {
+    setPlay(true)
+  }, [])
+
+  console.log(play)
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  // useEffect(() => {
+  //   // Play the audio when the component mounts
+  //   const handlePlay = () => {
+  //     if (audioRef.current) {
+  //       audioRef.current.play().catch(error => {
+  //         console.error('Play failed:', error);
+  //       });
+  //     }
+  //   };
+  //   if(play){
+  //     handlePlay()
+  //   }
+  // }, [play]);
+ 
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">pages/index.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div className='mobile:bg-home_Mobile tablet:bg-home_Tablet desktop:justify-between desktop:bg-home_Desktop h-screen bg-cover bg-no-repeat flex flex-col gap-5 pb-5 overflow-y-auto overflow-x-hidden desktop:py-8 2xl:pb-20 desktop:overflow-y-hidden'>
+      {
+        play && (
+          <Navbar />
+        )
+      }
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      <AnimatePresence>
+        <motion.div
+          initial={{ y: -15, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5 }} className='flex flex-col items-center desktop:items-start desktop:flex-row justify-evenly relative desktop:top-[-10px] gap-24 px-8'>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          <div className='w-fit flex flex-col items-center gap-0 mt-20'>
+            <p className='text-paleblue text-[18px] tracking-[2px]  text-center  desktop:relative desktop:top-5 desktop:left-0 desktop:text-left w-full max-w-[400px] desktop:text-3xl 2xl:max-w-[550px]'>SO, YOU WANT TO TRAVEL TO</p>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
+            <h1 className='text-[80px] tablet:text-[130px] tablet:mt-0 desktop:text-left 2xl:text-[180px] px-0 '>SPACE</h1>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+            <p className='text-center text-paleblue text-[17px] tracking-[0.5px]  w-full max-w-[400px] desktop:text-left desktop:relative desktop:text-lg 2xl:text-2xl 2xl:max-w-[550px]'>
+              {`Let's face it; if you want to go to space, you might as well genuinely
+            go to outer space and not hover kind of on the edge of it.
+            Well sit back and, realx because we'll give you a truly out of this world experience!`}
+            </p>
+          </div>
+
+          <div className=' w-full desktop:max-w-[400px] h-full flex items-center desktop:items-end justify-center '>
+            <AnimatePresence initial={false}>
+              <motion.div
+                className='absolute w-[200px] h-[200px] desktop:w-[400px] desktop:h-[400px] flex items-center desktop:items-end justify-center'
+              >
+                <motion.div
+                  key="1"
+                  initial={{ backgroundColor: "rgba(255, 255, 255, 0)", scaleX: 0, scaleY: 0 }}
+                  animate={!pulse ? { backgroundColor: "rgba(255, 255, 255, 0.2)", scaleX: 1, scaleY: 1 } : { backgroundColor: "rgba(255, 255, 255, 0.2)", scaleX: 1.4, scaleY: 1.4 }}
+                  transition={{ duration: 0.2, }}
+                  className={`w-[150px] h-[150px] tablet:w-[200px] tablet:h-[200px] desktop:w-[245px] desktop:h-[245px] 2xl:w-[345px] 2xl:h-[345px] rounded-full absolute transition duration-300`} />
+                <motion.div
+                  key="2"
+                  initial={{ backgroundColor: "rgba(255, 255, 255, 0)", scaleX: 0, scaleY: 0 }}
+                  animate={!pulse ? { backgroundColor: "rgba(255, 255, 255, 0.2)", scaleX: 1, scaleY: 1 } : { backgroundColor: "rgba(255, 255, 255, 0.2)", scaleX: 1.2, scaleY: 1.2 }}
+                  transition={{ duration: 0.15, }}
+                  className={`w-[150px] h-[150px]  tablet:w-[200px] tablet:h-[200px] desktop:w-[245px] desktop:h-[245px] 2xl:w-[345px] 2xl:h-[345px] rounded-full absolute transition duration-300`} />
+              </motion.div>
+
+            </AnimatePresence>
+
+            <div className='w-[150px] h-[150px] tablet:w-[200px] tablet:h-[200px] desktop:w-[245px] desktop:h-[245px] 2xl:w-[345px] 2xl:h-[345px]  rounded-full flex items-center justify-center z-20'>
+              <button onClick={moveNext}
+                onMouseEnter={pulseEffectDelay}
+                onMouseLeave={pulseEffectDelay}
+                className='w-[150px] h-[150px] tablet:w-[200px] tablet:h-[200px] desktop:w-[245px] desktop:h-[245px] 2xl:w-[345px] 2xl:h-[345px]  bg-white rounded-full '>
+                <h3 className='text-black text-xl tracking-wider desktop:text-3xl 2xl:text-[50px]'>EXPLORE</h3>
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+    </div >
   )
 }
