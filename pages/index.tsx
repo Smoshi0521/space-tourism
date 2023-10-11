@@ -40,7 +40,7 @@ export default function Home() {
         <motion.div
           initial={{ y: -15, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5 }} className='flex flex-col items-center desktop:items-start desktop:flex-row justify-evenly relative desktop:top-[-10px] gap-24 px-8'>
+          transition={{ duration: 0.5 }} className='flex flex-col items-center desktop:items-start desktop:flex-row justify-evenly relative desktop:top-[-10px] gap-24 px-8 pb-14'>
 
           <div className='w-fit flex flex-col items-center gap-0 mt-20'>
             <p className='text-paleblue text-[18px] tracking-[2px]  text-center  desktop:relative desktop:top-5 desktop:left-0 desktop:text-left w-full max-w-[400px] desktop:text-3xl 2xl:max-w-[550px]'>SO, YOU WANT TO TRAVEL TO</p>
